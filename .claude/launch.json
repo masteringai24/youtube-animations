@@ -1,0 +1,36 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "ai-workspace",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "ai-developer-workspace", "-l", "3500", "--no-clipboard"],
+      "port": 3500
+    }
+    ,
+    {
+      "name": "prompt-to-app",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "prompt-to-app", "-l", "3501", "--no-clipboard"],
+      "port": 3501
+    },
+    {
+      "name": "claude-code-evolution",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "claude-code-evolution", "-l", "3502", "--no-clipboard"],
+      "port": 3502
+    },
+    {
+      "name": "delegation-global-context",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "delegation-global-context", "-l", "3503", "--no-clipboard"],
+      "port": 3503
+    },
+    {
+      "name": "ai-omnipresence",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "ai-omnipresence", "-l", "3504", "--no-clipboard"],
+      "port": 3504
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Claude Code Evolution</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="scene" id="scene">
+
+    <!-- Background -->
+    <div class="bg-layer">
+      <div class="grid-bg"></div>
+      <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- ═══ Phase 1: Terminal CLI ═══ -->
+    <div class="phase-terminal" id="phaseTerminal">
+      <div class="date-badge" id="dateBadge">
+        <span class="date-icon">&#128197;</span>
+        <span>Février 2025</span>
+      </div>
+      <div class="terminal" id="terminal">
+        <div class="terminal-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="terminal-title">Terminal</span>
+        </div>
+        <div class="terminal-body">
+          <div class="term-line" id="tl1">
+            <span class="term-prompt">~$</span>
+            <span class="term-cmd" id="cmd1"></span>
+            <span class="term-cursor" id="cur1">&#9608;</span>
+          </div>
+          <div class="term-output" id="out1"></div>
+          <div class="term-line hidden" id="tl2">
+            <span class="term-prompt">~$</span>
+            <span class="term-cmd" id="cmd2"></span>
+            <span class="term-cursor" id="cur2">&#9608;</span>
+          </div>
+          <div class="term-output" id="out2"></div>
+          <div class="term-line hidden" id="tl3">
+            <span class="term-prompt">~$</span>
+            <span class="term-cmd" id="cmd3"></span>
+            <span class="term-cursor" id="cur3">&#9608;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ Phase 2: Evolution pulse ═══ -->
+    <div class="evolution-pulse" id="evolutionPulse">
+      <div class="pulse-ring r1"></div>
+      <div class="pulse-ring r2"></div>
+      <div class="pulse-ring r3"></div>
+      <div class="pulse-core"></div>
+      <div class="evo-label" id="evoLabel">Évolution</div>
+    </div>
+
+    <!-- ═══ Phase 3: Multi-platform ═══ -->
+    <div class="platforms-container" id="platformsContainer">
+
+      <div class="platform-label" id="platformLabel">Aujourd'hui</div>
+
+      <!-- 1. Browser — claude.ai -->
+      <div class="platform-card" id="cardBrowser">
+        <div class="card-screen browser-screen">
+          <div class="browser-topbar">
+            <span class="dot red sm"></span>
+            <span class="dot yellow sm"></span>
+            <span class="dot green sm"></span>
+            <div class="browser-url-bar">
+              <span class="url-lock">&#128274;</span>
+              <span class="url-text">claude.ai</span>
+            </div>
+          </div>
+          <div class="browser-body">
+            <div class="claude-logo-small">Claude</div>
+            <div class="chat-bubble ai-bubble">Comment puis-je vous aider ?</div>
+            <div class="chat-input-fake">
+              <span class="chat-placeholder">Demandez à Claude...</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-label">
+          <span class="card-icon">&#127760;</span>
+          <span>Navigateur</span>
+        </div>
+      </div>
+
+      <!-- 2. VS Code -->
+      <div class="platform-card" id="cardVscode">
+        <div class="card-screen vscode-screen">
+          <div class="vscode-topbar">
+            <span class="dot red sm"></span>
+            <span class="dot yellow sm"></span>
+            <span class="dot green sm"></span>
+            <span class="vscode-title">VS Code</span>
+          </div>
+          <div class="vscode-body">
+            <div class="vscode-sidebar">
+              <div class="vscode-file active-vsc">App.tsx</div>
+              <div class="vscode-file">index.ts</div>
+              <div class="vscode-file">style.css</div>
+            </div>
+            <div class="vscode-editor">
+              <div class="vsc-line"><span class="kw">const</span> <span class="fn">app</span> = ...</div>
+              <div class="vsc-line"><span class="cm">// Claude Code</span></div>
+              <div class="vsc-line"><span class="kw">export</span> <span class="fn">default</span></div>
+            </div>
+            <div class="vscode-claude-panel">
+              <div class="claude-panel-header">Claude Code</div>
+              <div class="claude-panel-msg">Fichier mis à jour ✓</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-label">
+          <span class="card-icon">&#9874;</span>
+          <span>VS Code</span>
+        </div>
+      </div>
+
+      <!-- 3. Desktop App -->
+      <div class="platform-card" id="cardDesktop">
+        <div class="card-screen desktop-screen">
+          <div class="desktop-topbar">
+            <span class="dot red sm"></span>
+            <span class="dot yellow sm"></span>
+            <span class="dot green sm"></span>
+            <span class="desktop-title">Claude</span>
+          </div>
+          <div class="desktop-body">
+            <div class="desktop-conv">
+              <div class="chat-bubble user-bubble-d">Analyse ce fichier</div>
+              <div class="chat-bubble ai-bubble-d">Voici mon analyse du code...</div>
+            </div>
+            <div class="desktop-input">
+              <span class="chat-placeholder">Message...</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-label">
+          <span class="card-icon">&#128187;</span>
+          <span>App Desktop</span>
+        </div>
+      </div>
+
+      <!-- 4. iOS App -->
+      <div class="platform-card" id="cardIos">
+        <div class="card-screen ios-screen">
+          <div class="ios-notch"></div>
+          <div class="ios-status">
+            <span>9:41</span>
+            <span class="ios-icons">&#128267; &#128246;</span>
+          </div>
+          <div class="ios-body">
+            <div class="ios-header">Claude</div>
+            <div class="ios-conv">
+              <div class="chat-bubble user-bubble-m">Résume cet article</div>
+              <div class="chat-bubble ai-bubble-m">Bien sûr, voici...</div>
+            </div>
+            <div class="ios-input">
+              <div class="ios-input-field">Aa</div>
+              <div class="ios-send-btn">&#9650;</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-label">
+          <span class="card-icon">&#128241;</span>
+          <span>App iOS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Connection lines between platforms -->
+    <svg class="connection-lines" id="connectionLines" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0" />
+          <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:.6" />
+          <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0" />
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <!-- Bokeh -->
+    <div class="bokeh">
+      <div class="bokeh-circle b1"></div>
+      <div class="bokeh-circle b2"></div>
+      <div class="bokeh-circle b3"></div>
+      <div class="bokeh-circle b4"></div>
+    </div>
+
+    <!-- Light sweep -->
+    <div class="light-sweep"></div>
+
+    <!-- Fade overlay -->
+    <div class="fade-overlay" id="fadeOverlay"></div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>

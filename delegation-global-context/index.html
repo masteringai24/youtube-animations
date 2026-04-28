@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Delegation — Global Context</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="scene" id="scene">
+
+    <!-- Background -->
+    <div class="bg-layer">
+      <div class="grid-bg"></div>
+      <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- ═══ Human Developer ═══ -->
+    <div class="human-figure" id="humanFigure">
+      <div class="hf-glow"></div>
+      <div class="hf-head"></div>
+      <div class="hf-neck"></div>
+      <div class="hf-body">
+        <div class="hf-torso"></div>
+        <div class="hf-arm hf-arm-left" id="armLeft"></div>
+        <div class="hf-arm hf-arm-right" id="armRight"></div>
+      </div>
+      <div class="hf-label">Développeur</div>
+    </div>
+
+    <!-- ═══ AI Entity / Robot ═══ -->
+    <div class="ai-entity" id="aiEntity">
+      <div class="ai-glow"></div>
+      <div class="ai-head">
+        <div class="ai-eye ai-eye-l"></div>
+        <div class="ai-eye ai-eye-r"></div>
+        <div class="ai-antenna"></div>
+      </div>
+      <div class="ai-neck"></div>
+      <div class="ai-body">
+        <div class="ai-torso">
+          <div class="ai-core"></div>
+          <div class="ai-ring r1"></div>
+          <div class="ai-ring r2"></div>
+        </div>
+        <div class="ai-arm ai-arm-left"></div>
+        <div class="ai-arm ai-arm-right"></div>
+      </div>
+      <div class="ai-label">IA</div>
+    </div>
+
+    <!-- ═══ Task Cards (fly from human to AI) ═══ -->
+    <div class="task-cards" id="taskCards">
+      <div class="task-card" id="task0">
+        <span class="tc-icon">&#128295;</span> Refactorer l'API
+      </div>
+      <div class="task-card" id="task1">
+        <span class="tc-icon">&#128274;</span> Corriger le bug auth
+      </div>
+      <div class="task-card" id="task2">
+        <span class="tc-icon">&#9989;</span> Ajouter les tests
+      </div>
+    </div>
+
+    <!-- ═══ Project Map (Phase 3) ═══ -->
+    <div class="project-map" id="projectMap">
+
+      <!-- File tree -->
+      <div class="file-tree-panel" id="fileTreePanel">
+        <div class="panel-header">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="panel-title">Projet</span>
+        </div>
+        <div class="file-tree" id="fileTree">
+          <div class="tree-item folder root" data-i="0"><span class="ti">&#128193;</span> my-project/</div>
+          <div class="tree-item folder" data-i="1"><span class="indent1"></span><span class="ti">&#128193;</span> src/</div>
+          <div class="tree-item file"   data-i="2"><span class="indent2"></span><span class="fi">&#128196;</span> index.ts</div>
+          <div class="tree-item folder" data-i="3"><span class="indent2"></span><span class="ti">&#128193;</span> api/</div>
+          <div class="tree-item file"   data-i="4"><span class="indent3"></span><span class="fi">&#128196;</span> routes.ts</div>
+          <div class="tree-item file"   data-i="5"><span class="indent3"></span><span class="fi">&#128196;</span> auth.ts</div>
+          <div class="tree-item folder" data-i="6"><span class="indent2"></span><span class="ti">&#128193;</span> utils/</div>
+          <div class="tree-item file"   data-i="7"><span class="indent3"></span><span class="fi">&#128196;</span> helpers.ts</div>
+          <div class="tree-item folder" data-i="8"><span class="indent2"></span><span class="ti">&#128193;</span> tests/</div>
+          <div class="tree-item file"   data-i="9"><span class="indent3"></span><span class="fi">&#128196;</span> api.test.ts</div>
+          <div class="tree-item file"   data-i="10"><span class="indent1"></span><span class="fi">&#128196;</span> package.json</div>
+          <div class="tree-item file"   data-i="11"><span class="indent1"></span><span class="fi">&#128196;</span> .env</div>
+        </div>
+      </div>
+
+      <!-- File cards constellation -->
+      <div class="file-cards" id="fileCards">
+        <!-- index.ts — entry point, center -->
+        <div class="file-card" id="fc0" style="top:40px;left:280px">
+          <div class="fc-header"><span class="fc-name">index.ts</span><span class="fc-badge badge-entry">Entry</span></div>
+          <div class="fc-code"><span class="kw">import</span> { <span class="fn">createApp</span> } <span class="kw">from</span> <span class="str">'./api'</span></div>
+          <div class="fc-code"><span class="fn">createApp</span>().<span class="fn">listen</span>(<span class="num">3000</span>)</div>
+        </div>
+        <!-- routes.ts -->
+        <div class="file-card" id="fc1" style="top:0;left:0">
+          <div class="fc-header"><span class="fc-name">routes.ts</span><span class="fc-badge badge-api">API</span></div>
+          <div class="fc-code"><span class="kw">import</span> { <span class="fn">auth</span> } <span class="kw">from</span> <span class="str">'./auth'</span></div>
+          <div class="fc-code"><span class="kw">import</span> { <span class="fn">log</span> } <span class="kw">from</span> <span class="str">'../utils'</span></div>
+        </div>
+        <!-- auth.ts -->
+        <div class="file-card" id="fc2" style="top:200px;left:0">
+          <div class="fc-header"><span class="fc-name">auth.ts</span><span class="fc-badge badge-auth">Auth</span></div>
+          <div class="fc-code"><span class="kw">const</span> <span class="fn">secret</span> = <span class="fn">env</span>(<span class="str">'JWT_KEY'</span>)</div>
+          <div class="fc-code"><span class="kw">export</span> <span class="kw">function</span> <span class="fn">verify</span>()</div>
+        </div>
+        <!-- helpers.ts -->
+        <div class="file-card" id="fc3" style="top:200px;left:310px">
+          <div class="fc-header"><span class="fc-name">helpers.ts</span><span class="fc-badge badge-utils">Utils</span></div>
+          <div class="fc-code"><span class="kw">export</span> <span class="kw">function</span> <span class="fn">log</span>(msg)</div>
+          <div class="fc-code"><span class="kw">export</span> <span class="kw">function</span> <span class="fn">format</span>(d)</div>
+        </div>
+        <!-- api.test.ts -->
+        <div class="file-card" id="fc4" style="top:110px;left:530px">
+          <div class="fc-header"><span class="fc-name">api.test.ts</span><span class="fc-badge badge-test">Tests</span></div>
+          <div class="fc-code"><span class="fn">describe</span>(<span class="str">'API'</span>, () =&gt; {</div>
+          <div class="fc-code">  <span class="fn">it</span>(<span class="str">'should auth'</span>, ...)</div>
+        </div>
+      </div>
+
+      <!-- SVG connections -->
+      <svg class="connections-svg" id="connectionsSvg" viewBox="0 0 800 400">
+        <defs>
+          <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0" />
+            <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:.7" />
+            <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- ═══ Highlight contrast ═══ -->
+    <div class="highlight-label" id="highlightLabel">
+      <span class="hl-cross">&#10005; Un seul fichier</span>
+      <span class="hl-arrow">&#10132;</span>
+      <span class="hl-check">&#10003; Tout le projet</span>
+    </div>
+
+    <!-- ═══ Success badge ═══ -->
+    <div class="success-badge" id="successBadge">
+      <div class="success-check">&#10003;</div>
+      <div class="success-text">Compréhension globale du projet</div>
+    </div>
+
+    <!-- Energy lines container -->
+    <div class="energy-lines" id="energyLines"></div>
+
+    <!-- Bokeh -->
+    <div class="bokeh">
+      <div class="bokeh-circle b1"></div>
+      <div class="bokeh-circle b2"></div>
+      <div class="bokeh-circle b3"></div>
+      <div class="bokeh-circle b4"></div>
+    </div>
+
+    <div class="light-sweep"></div>
+    <div class="fade-overlay" id="fadeOverlay"></div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>

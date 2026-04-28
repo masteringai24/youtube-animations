@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(ffmpeg -version)",
+      "Bash(pip list:*)",
+      "Bash(python -c \"import cv2; print\\(''opencv ok''\\)\")",
+      "Bash(pip install:*)"
+    ]
+  }
+}

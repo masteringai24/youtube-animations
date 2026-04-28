@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>AI Omnipresence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="scene" id="scene">
+
+    <!-- Background atmosphere -->
+    <div class="bg-layer">
+      <div class="grid-bg"></div>
+      <div class="particles" id="particles"></div>
+      <div class="bokeh">
+        <div class="bokeh-circle b1"></div>
+        <div class="bokeh-circle b2"></div>
+        <div class="bokeh-circle b3"></div>
+        <div class="bokeh-circle b4"></div>
+        <div class="bokeh-circle b5"></div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         SCENE 1 — Global Network
+         ═══════════════════════════════════════════ -->
+    <div class="scene-stage" id="stage1">
+      <div class="globe-wrapper">
+        <div class="globe">
+          <div class="globe-ring gr1"></div>
+          <div class="globe-ring gr2"></div>
+          <div class="globe-ring gr3"></div>
+          <div class="globe-core"></div>
+          <!-- Network nodes -->
+          <div class="net-node n1"></div>
+          <div class="net-node n2"></div>
+          <div class="net-node n3"></div>
+          <div class="net-node n4"></div>
+          <div class="net-node n5"></div>
+          <div class="net-node n6"></div>
+          <div class="net-node n7"></div>
+          <div class="net-node n8"></div>
+        </div>
+        <svg class="net-svg" viewBox="0 0 800 800">
+          <defs>
+            <linearGradient id="netGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#3b82f6" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#8b5cf6" stop-opacity=".9"/>
+              <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path class="net-path" d="M 400 100 Q 600 250 700 400"/>
+          <path class="net-path" d="M 400 100 Q 200 250 100 400"/>
+          <path class="net-path" d="M 100 400 Q 250 600 400 700"/>
+          <path class="net-path" d="M 700 400 Q 550 600 400 700"/>
+          <path class="net-path" d="M 400 100 Q 400 400 400 700"/>
+          <path class="net-path" d="M 100 400 Q 400 350 700 400"/>
+          <path class="net-path" d="M 220 200 Q 400 400 580 600"/>
+          <path class="net-path" d="M 580 200 Q 400 400 220 600"/>
+        </svg>
+      </div>
+      <div class="scene-label">Réseau global</div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         SCENE 2 — Code Editor
+         ═══════════════════════════════════════════ -->
+    <div class="scene-stage" id="stage2">
+      <div class="code-window">
+        <div class="cw-header">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="cw-title">main.ts — AI</span>
+        </div>
+        <div class="cw-body">
+          <div class="cw-line"><span class="ln">1</span><span class="kw">import</span> { <span class="fn">AI</span> } <span class="kw">from</span> <span class="str">'@core'</span></div>
+          <div class="cw-line"><span class="ln">2</span><span class="kw">const</span> <span class="fn">ai</span> = <span class="kw">new</span> <span class="fn">AI</span>({ <span class="prop">mode</span>: <span class="str">'auto'</span> })</div>
+          <div class="cw-line"><span class="ln">3</span><span class="kw">async</span> <span class="kw">function</span> <span class="fn">build</span>() {</div>
+          <div class="cw-line"><span class="ln">4</span>  <span class="kw">await</span> <span class="fn">ai</span>.<span class="fn">create</span>(<span class="str">'app'</span>)</div>
+          <div class="cw-line"><span class="ln">5</span>  <span class="kw">await</span> <span class="fn">ai</span>.<span class="fn">deploy</span>()</div>
+          <div class="cw-line"><span class="ln">6</span>}</div>
+          <div class="cw-line"><span class="ln">7</span><span class="fn">build</span>()<span class="cursor">|</span></div>
+        </div>
+      </div>
+      <div class="scene-label">Éditeurs de code</div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         SCENE 3 — Cloud Servers
+         ═══════════════════════════════════════════ -->
+    <div class="scene-stage" id="stage3">
+      <div class="cloud-stack">
+        <div class="cloud-server cs1">
+          <div class="cs-glow"></div>
+          <div class="cs-row"><span class="cs-led"></span> node-01</div>
+          <div class="cs-row"><span class="cs-led"></span> node-02</div>
+          <div class="cs-row"><span class="cs-led"></span> node-03</div>
+          <div class="cs-row"><span class="cs-led"></span> node-04</div>
+        </div>
+        <div class="cloud-server cs2">
+          <div class="cs-glow"></div>
+          <div class="cs-row"><span class="cs-led"></span> sync-A</div>
+          <div class="cs-row"><span class="cs-led"></span> sync-B</div>
+          <div class="cs-row"><span class="cs-led"></span> sync-C</div>
+          <div class="cs-row"><span class="cs-led"></span> sync-D</div>
+        </div>
+        <div class="cloud-server cs3">
+          <div class="cs-glow"></div>
+          <div class="cs-row"><span class="cs-led"></span> ai-gpu-01</div>
+          <div class="cs-row"><span class="cs-led"></span> ai-gpu-02</div>
+          <div class="cs-row"><span class="cs-led"></span> ai-gpu-03</div>
+          <div class="cs-row"><span class="cs-led"></span> ai-gpu-04</div>
+        </div>
+      </div>
+      <div class="data-stream ds1"></div>
+      <div class="data-stream ds2"></div>
+      <div class="data-stream ds3"></div>
+      <div class="scene-label">Cloud distribué</div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         SCENE 4 — Smartphones
+         ═══════════════════════════════════════════ -->
+    <div class="scene-stage" id="stage4">
+      <div class="phone-row">
+        <div class="phone p1">
+          <div class="phone-screen">
+            <div class="phone-bar"></div>
+            <div class="phone-app a1"></div>
+            <div class="phone-app a2"></div>
+            <div class="phone-app a3"></div>
+            <div class="phone-app a4"></div>
+            <div class="phone-pulse"></div>
+          </div>
+        </div>
+        <div class="phone p2">
+          <div class="phone-screen">
+            <div class="phone-bar"></div>
+            <div class="phone-chat"></div>
+            <div class="phone-chat right"></div>
+            <div class="phone-chat"></div>
+            <div class="phone-pulse"></div>
+          </div>
+        </div>
+        <div class="phone p3">
+          <div class="phone-screen">
+            <div class="phone-bar"></div>
+            <div class="phone-graph"></div>
+            <div class="phone-pulse"></div>
+          </div>
+        </div>
+      </div>
+      <div class="scene-label">Smartphones</div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         SCENE 5 — Personal Desktop
+         ═══════════════════════════════════════════ -->
+    <div class="scene-stage" id="stage5">
+      <div class="desk">
+        <div class="desk-surface"></div>
+        <div class="monitor">
+          <div class="monitor-frame">
+            <div class="monitor-screen">
+              <div class="m-window mw1">
+                <div class="mw-bar"></div>
+                <div class="mw-content"></div>
+              </div>
+              <div class="m-window mw2">
+                <div class="mw-bar"></div>
+                <div class="mw-content"></div>
+              </div>
+              <div class="m-window mw3">
+                <div class="mw-bar"></div>
+                <div class="mw-content"></div>
+              </div>
+              <div class="assistant-orb">
+                <div class="orb-core"></div>
+                <div class="orb-ring"></div>
+              </div>
+            </div>
+          </div>
+          <div class="monitor-stand"></div>
+          <div class="monitor-base"></div>
+        </div>
+        <div class="keyboard"></div>
+        <div class="mouse"></div>
+        <div class="lamp-glow"></div>
+      </div>
+      <div class="scene-label">Votre bureau</div>
+    </div>
+
+    <!-- Energy lines -->
+    <div class="energy-lines" id="energyLines"></div>
+
+    <!-- Light sweep + fade -->
+    <div class="light-sweep"></div>
+    <div class="fade-overlay" id="fadeOverlay"></div>
+
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>

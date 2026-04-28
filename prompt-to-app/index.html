@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Prompt to App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="scene" id="scene">
+
+    <!-- Background -->
+    <div class="bg-layer">
+      <div class="grid-bg"></div>
+      <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Phase 1: Prompt input -->
+    <div class="prompt-box" id="promptBox">
+      <div class="prompt-header">
+        <div class="prompt-avatar">AI</div>
+        <span class="prompt-label">Demandez n'importe quoi...</span>
+      </div>
+      <div class="prompt-input">
+        <span class="prompt-text" id="promptText"></span>
+        <span class="prompt-cursor" id="promptCursor">|</span>
+      </div>
+      <div class="prompt-send" id="promptSend">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Phase 2: AI Processing -->
+    <div class="ai-processing" id="aiProcessing">
+      <div class="ai-brain">
+        <div class="brain-core"></div>
+        <div class="brain-ring r1"></div>
+        <div class="brain-ring r2"></div>
+        <div class="brain-ring r3"></div>
+      </div>
+      <div class="ai-status" id="aiStatus">Analyse de la demande...</div>
+      <div class="ai-steps" id="aiSteps">
+        <div class="ai-step" data-step="0">
+          <span class="step-icon">&#9673;</span>
+          <span class="step-text">Compris : application web complète</span>
+        </div>
+        <div class="ai-step" data-step="1">
+          <span class="step-icon">&#9673;</span>
+          <span class="step-text">Architecture du projet</span>
+        </div>
+        <div class="ai-step" data-step="2">
+          <span class="step-icon">&#9673;</span>
+          <span class="step-text">Génération du code</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 3: File tree generation -->
+    <div class="file-tree-panel" id="fileTreePanel">
+      <div class="panel-header">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span class="panel-title">Explorateur</span>
+      </div>
+      <div class="file-tree" id="fileTree">
+        <div class="tree-item folder root" data-idx="0">
+          <span class="tree-icon">&#128193;</span> mon-app/
+        </div>
+        <div class="tree-item file" data-idx="1">
+          <span class="tree-indent"></span><span class="tree-icon file-icon">&#128196;</span> package.json
+        </div>
+        <div class="tree-item folder" data-idx="2">
+          <span class="tree-indent"></span><span class="tree-icon">&#128193;</span> src/
+        </div>
+        <div class="tree-item file" data-idx="3">
+          <span class="tree-indent2"></span><span class="tree-icon file-icon">&#128196;</span> App.jsx
+        </div>
+        <div class="tree-item file" data-idx="4">
+          <span class="tree-indent2"></span><span class="tree-icon file-icon">&#128196;</span> index.js
+        </div>
+        <div class="tree-item folder" data-idx="5">
+          <span class="tree-indent"></span><span class="tree-icon">&#128193;</span> pages/
+        </div>
+        <div class="tree-item file active-file" data-idx="6">
+          <span class="tree-indent2"></span><span class="tree-icon file-icon">&#128196;</span> Home.jsx
+        </div>
+        <div class="tree-item file" data-idx="7">
+          <span class="tree-indent2"></span><span class="tree-icon file-icon">&#128196;</span> Login.jsx
+        </div>
+        <div class="tree-item file" data-idx="8">
+          <span class="tree-indent2"></span><span class="tree-icon file-icon">&#128196;</span> Register.jsx
+        </div>
+        <div class="tree-item folder" data-idx="9">
+          <span class="tree-indent"></span><span class="tree-icon">&#128193;</span> auth/
+        </div>
+        <div class="tree-item file" data-idx="10">
+          <span class="tree-indent2"></span><span class="tree-icon file-icon">&#128196;</span> AuthContext.jsx
+        </div>
+        <div class="tree-item file" data-idx="11">
+          <span class="tree-indent2"></span><span class="tree-icon file-icon">&#128196;</span> ProtectedRoute.jsx
+        </div>
+        <div class="tree-item folder" data-idx="12">
+          <span class="tree-indent"></span><span class="tree-icon">&#128193;</span> database/
+        </div>
+        <div class="tree-item file" data-idx="13">
+          <span class="tree-indent2"></span><span class="tree-icon file-icon">&#128196;</span> schema.prisma
+        </div>
+        <div class="tree-item file" data-idx="14">
+          <span class="tree-indent2"></span><span class="tree-icon file-icon">&#128196;</span> seed.js
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 3: Code panels -->
+    <div class="code-panels" id="codePanels">
+      <!-- Panel 1: Home page -->
+      <div class="code-panel" id="panel1">
+        <div class="panel-header">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="panel-title">Home.jsx</span>
+          <span class="panel-badge badge-page">Page</span>
+        </div>
+        <div class="code-body" id="code1"></div>
+      </div>
+
+      <!-- Panel 2: Auth -->
+      <div class="code-panel" id="panel2">
+        <div class="panel-header">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="panel-title">AuthContext.jsx</span>
+          <span class="panel-badge badge-auth">Auth</span>
+        </div>
+        <div class="code-body" id="code2"></div>
+      </div>
+
+      <!-- Panel 3: Database -->
+      <div class="code-panel" id="panel3">
+        <div class="panel-header">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="panel-title">schema.prisma</span>
+          <span class="panel-badge badge-db">DB</span>
+        </div>
+        <div class="code-body" id="code3"></div>
+      </div>
+    </div>
+
+    <!-- Phase 4: App preview -->
+    <div class="app-preview" id="appPreview">
+      <div class="preview-browser">
+        <div class="browser-bar">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <div class="browser-url">
+            <span class="url-lock">&#128274;</span>
+            <span>localhost:3000</span>
+          </div>
+        </div>
+        <div class="browser-content">
+          <!-- Nav -->
+          <div class="preview-nav">
+            <div class="nav-logo">MonApp</div>
+            <div class="nav-links">
+              <span class="nav-link active">Accueil</span>
+              <span class="nav-link">Connexion</span>
+              <span class="nav-link">Inscription</span>
+            </div>
+          </div>
+          <!-- Hero -->
+          <div class="preview-hero">
+            <h1 class="hero-title">Bienvenue sur MonApp</h1>
+            <p class="hero-sub">Votre application web, prête à l'emploi.</p>
+            <div class="hero-btn">Commencer</div>
+          </div>
+          <!-- Cards -->
+          <div class="preview-cards">
+            <div class="preview-card">
+              <div class="card-icon">&#128272;</div>
+              <div class="card-title">Authentification</div>
+              <div class="card-desc">Connexion sécurisée</div>
+            </div>
+            <div class="preview-card">
+              <div class="card-icon">&#128451;</div>
+              <div class="card-title">Base de données</div>
+              <div class="card-desc">Prisma + PostgreSQL</div>
+            </div>
+            <div class="preview-card">
+              <div class="card-icon">&#9889;</div>
+              <div class="card-title">API Routes</div>
+              <div class="card-desc">REST endpoints</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success badge -->
+    <div class="success-badge" id="successBadge">
+      <div class="success-check">&#10003;</div>
+      <div class="success-text">Projet complet, structuré, fonctionnel.</div>
+    </div>
+
+    <!-- Floating particles / energy lines -->
+    <div class="energy-lines" id="energyLines"></div>
+
+    <!-- Bokeh -->
+    <div class="bokeh">
+      <div class="bokeh-circle b1"></div>
+      <div class="bokeh-circle b2"></div>
+      <div class="bokeh-circle b3"></div>
+      <div class="bokeh-circle b4"></div>
+    </div>
+
+    <!-- Light sweep -->
+    <div class="light-sweep"></div>
+
+    <!-- Fade overlay -->
+    <div class="fade-overlay" id="fadeOverlay"></div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>

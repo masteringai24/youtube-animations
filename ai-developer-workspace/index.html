@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <base href="./">
+  <title>AI Developer Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="scene" id="scene">
+
+    <!-- Layer 0: Background particles -->
+    <div class="bg-layer">
+      <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Layer 1: Perspective grid floor -->
+    <div class="grid-floor"></div>
+    <div class="desk">
+      <div class="desk-surface"></div>
+      <div class="desk-glow"></div>
+    </div>
+
+    <!-- Layer 2: Floating holographic screens -->
+    <div class="screens-container">
+      <div class="holo-screen screen-left" id="screenLeft">
+        <div class="screen-header">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="screen-title">app.component.ts</span>
+        </div>
+        <div class="screen-code" id="codeLeft">
+          <div class="code-line"><span class="keyword">import</span> <span class="brace">{</span> <span class="func">Component</span> <span class="brace">}</span> <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div>
+          <div class="code-line"><span class="keyword">import</span> <span class="brace">{</span> <span class="func">AIService</span> <span class="brace">}</span> <span class="keyword">from</span> <span class="string">'./services/ai'</span>;</div>
+          <div class="code-line"></div>
+          <div class="code-line"><span class="decorator">@Component</span>(<span class="brace">{</span></div>
+          <div class="code-line">  <span class="prop">selector</span>: <span class="string">'app-root'</span>,</div>
+          <div class="code-line">  <span class="prop">template</span>: <span class="string">'./app.html'</span></div>
+          <div class="code-line"><span class="brace">}</span>)</div>
+          <div class="code-line"><span class="keyword">export class</span> <span class="func">AppComponent</span> <span class="brace">{</span></div>
+          <div class="code-line">  <span class="prop">title</span> = <span class="string">'AI Workspace'</span>;</div>
+          <div class="code-line">  <span class="prop">model</span>: <span class="func">AIModel</span>;</div>
+          <div class="code-line"></div>
+          <div class="code-line bug" id="bugLine1">  <span class="keyword">async</span> <span class="func">initialize</span>() <span class="brace">{</span></div>
+          <div class="code-line bug" id="bugLine2">    <span class="keyword">this</span>.<span class="prop">model</span> = <span class="keyword">await</span> <span class="func">loadModel</span>();</div>
+          <div class="code-line">  <span class="brace">}</span></div>
+          <div class="code-line"><span class="brace">}</span></div>
+        </div>
+        <div class="screen-shimmer"></div>
+      </div>
+
+      <div class="holo-screen screen-center" id="screenCenter">
+        <div class="screen-header">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="screen-title">ai-engine.ts</span>
+        </div>
+        <div class="screen-code" id="codeCenter"></div>
+        <div class="screen-shimmer"></div>
+      </div>
+
+      <div class="holo-screen screen-right" id="screenRight">
+        <div class="screen-header">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="screen-title">neural-network.py</span>
+        </div>
+        <div class="screen-code" id="codeRight">
+          <div class="code-line"><span class="keyword">import</span> <span class="func">torch</span></div>
+          <div class="code-line"><span class="keyword">import</span> <span class="func">torch.nn</span> <span class="keyword">as</span> <span class="func">nn</span></div>
+          <div class="code-line"></div>
+          <div class="code-line"><span class="keyword">class</span> <span class="func">NeuralNet</span>(<span class="func">nn.Module</span>):</div>
+          <div class="code-line">  <span class="keyword">def</span> <span class="func">__init__</span>(<span class="prop">self</span>):</div>
+          <div class="code-line">    <span class="func">super</span>().__init__()</div>
+          <div class="code-line">    <span class="prop">self</span>.<span class="prop">layers</span> = <span class="func">nn.Sequential</span>(</div>
+          <div class="code-line">      <span class="func">nn.Linear</span>(<span class="num">784</span>, <span class="num">256</span>),</div>
+          <div class="code-line">      <span class="func">nn.ReLU</span>(),</div>
+          <div class="code-line">      <span class="func">nn.Linear</span>(<span class="num">256</span>, <span class="num">10</span>)</div>
+          <div class="code-line">    )</div>
+          <div class="code-line"></div>
+          <div class="code-line">  <span class="keyword">def</span> <span class="func">forward</span>(<span class="prop">self</span>, <span class="prop">x</span>):</div>
+          <div class="code-line">    <span class="keyword">return</span> <span class="prop">self</span>.<span class="func">layers</span>(<span class="prop">x</span>)</div>
+        </div>
+        <div class="screen-shimmer"></div>
+      </div>
+    </div>
+
+    <!-- Layer 3: Developer silhouette -->
+    <div class="developer">
+      <div class="dev-head"></div>
+      <div class="dev-neck"></div>
+      <div class="dev-torso"></div>
+      <div class="dev-arm dev-arm-left"></div>
+      <div class="dev-arm dev-arm-right"></div>
+      <div class="dev-glow"></div>
+    </div>
+
+    <!-- Layer 4: AI Entity -->
+    <div class="ai-entity" id="aiEntity">
+      <div class="ai-core"></div>
+      <div class="ai-rings">
+        <div class="ai-ring ring-1"></div>
+        <div class="ai-ring ring-2"></div>
+        <div class="ai-ring ring-3"></div>
+      </div>
+      <div class="ai-particles" id="aiParticles"></div>
+      <div class="ai-glow"></div>
+    </div>
+
+    <!-- Light trail from AI to screens -->
+    <div class="light-trail" id="lightTrail">
+      <div class="trail trail-1"></div>
+      <div class="trail trail-2"></div>
+      <div class="trail trail-3"></div>
+    </div>
+
+    <!-- Layer 5: Terminal -->
+    <div class="terminal" id="terminal">
+      <div class="terminal-header">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span class="terminal-title">Terminal</span>
+      </div>
+      <div class="terminal-body" id="terminalBody">
+        <div class="terminal-line">
+          <span class="prompt">$</span>
+          <span class="cmd" id="cmd1"></span>
+          <span class="cursor" id="cursor1">_</span>
+        </div>
+        <div class="terminal-output" id="output1"></div>
+        <div class="terminal-line" id="termLine2" style="display:none">
+          <span class="prompt">$</span>
+          <span class="cmd" id="cmd2"></span>
+          <span class="cursor" id="cursor2">_</span>
+        </div>
+        <div class="terminal-output" id="output2"></div>
+        <div class="terminal-line" id="termLine3" style="display:none">
+          <span class="prompt">$</span>
+          <span class="cmd" id="cmd3"></span>
+          <span class="cursor" id="cursor3">_</span>
+        </div>
+        <div class="terminal-output" id="output3"></div>
+      </div>
+    </div>
+
+    <!-- Layer 5: Git Graph -->
+    <div class="git-graph" id="gitGraph">
+      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- Main branch -->
+        <path class="git-path main-branch" d="M 50,250 L 50,200 L 50,150 L 50,100 L 50,50" />
+        <!-- Feature branch -->
+        <path class="git-path feature-branch" d="M 50,200 Q 100,180 150,160 Q 200,140 200,100 Q 200,70 150,60 Q 100,50 50,50" />
+        <!-- Commit nodes -->
+        <circle class="git-node node-1" cx="50" cy="250" r="0" />
+        <circle class="git-node node-2" cx="50" cy="200" r="0" />
+        <circle class="git-node node-3" cx="50" cy="150" r="0" />
+        <circle class="git-node node-4" cx="150" cy="160" r="0" />
+        <circle class="git-node node-5" cx="200" cy="100" r="0" />
+        <circle class="git-node node-6" cx="50" cy="100" r="0" />
+        <!-- Merge node -->
+        <circle class="git-node merge-node" cx="50" cy="50" r="0" />
+        <circle class="merge-flash" cx="50" cy="50" r="0" />
+        <!-- Labels -->
+        <text class="git-label main-label" x="70" y="255" opacity="0">main</text>
+        <text class="git-label feature-label" x="160" y="155" opacity="0">feature/ai-engine</text>
+        <text class="git-label merge-label" x="70" y="45" opacity="0">merged</text>
+      </svg>
+    </div>
+
+    <!-- New file panel -->
+    <div class="new-file-panel" id="newFilePanel">
+      <div class="screen-header">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span class="screen-title">+ config.json (new)</span>
+      </div>
+      <div class="screen-code new-file-code">
+        <div class="code-line"><span class="brace">{</span></div>
+        <div class="code-line">  <span class="string">"model"</span>: <span class="string">"claude-opus"</span>,</div>
+        <div class="code-line">  <span class="string">"temperature"</span>: <span class="num">0.7</span>,</div>
+        <div class="code-line">  <span class="string">"maxTokens"</span>: <span class="num">4096</span></div>
+        <div class="code-line"><span class="brace">}</span></div>
+      </div>
+    </div>
+
+    <!-- Layer 6: Foreground bokeh -->
+    <div class="bokeh">
+      <div class="bokeh-circle b1"></div>
+      <div class="bokeh-circle b2"></div>
+      <div class="bokeh-circle b3"></div>
+      <div class="bokeh-circle b4"></div>
+      <div class="bokeh-circle b5"></div>
+      <div class="bokeh-circle b6"></div>
+    </div>
+
+    <!-- Code streams (floating code outside screens) -->
+    <div class="code-streams">
+      <div class="code-stream s1"></div>
+      <div class="code-stream s2"></div>
+      <div class="code-stream s3"></div>
+      <div class="code-stream s4"></div>
+      <div class="code-stream s5"></div>
+    </div>
+
+    <!-- Cinematic light sweep -->
+    <div class="light-sweep"></div>
+
+    <!-- Fade overlay for intro/outro -->
+    <div class="fade-overlay" id="fadeOverlay"></div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
